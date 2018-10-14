@@ -1,6 +1,6 @@
 # Simple Nodejs boilerplate
 
-A very simple Nodejs boilerplate with no bells or whistles.
+Nodejs boilerplate with nodemon, gulp and nunjucks.
 
 ## Installation
 

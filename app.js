@@ -1,11 +1,12 @@
 const app = require('express')();
 const express = require('express');
-const router = require('./config/routes.js');
+const routing = require('./middleware/routing.js');
 const nunjucks = require('nunjucks');
 const path = require('path');
 
-app.set('view engine', 'html');
+app.set('view engine', 'njk');
 app.set('port', process.env.PORT || 3000);
+app.use(express.static(path.join(__dirname, 'app/assets')));
 
 var appViews = [
   path.join(__dirname, '/app/views/')
@@ -19,7 +20,7 @@ nunjucks.configure(appViews, {
 })
 
 app.get(/^([^.]+)$/, function (req, res, next) {
-  router.matchRoutes(req, res, next)
+  routing.matchRoutes(req, res, next)
 })
 
 if (app.get('env') === 'production') {
