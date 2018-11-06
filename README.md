@@ -1,10 +1,12 @@
 # Simple Nodejs boilerplate
 
-Nodejs boilerplate with nodemon, gulp and nunjucks.
+Nodejs boilerplate with nodemon, gulp and nunjucks. Useful for basic websites or protoypes.
 
-## Installation
+## Prerequisite
 
 Install the long-term support (LTS) version of <a href="https://nodejs.org/en/">Node.js</a>, which includes NPM.
+
+## Running the application
 
 Clone the repo: `git clone https://github.com/AdamChrimes/nodejs-boilerplate-simple.git nodejs-boilerplate-simple` and whilst in the project directory `cd nodejs-boilerplate-simple`, install the required npm packages with: `npm install`
 

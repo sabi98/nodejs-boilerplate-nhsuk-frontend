@@ -1,17 +1,17 @@
 {
   "name": "nodejs-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Nodejs boilerplate with nodemon, gulp and nunjucks. Useful for basic websites or protoypes.",
   "main": "app.js",
   "scripts": {
-    "start": "",
+    "start": "node app",
     "test": "",
     "watch": "concurrently \"gulp\" \"nodemon -e js,njk,scss --watch app\""
   },
-  "author": "Adam Chrimes",
+  "author": "https://github.com/AdamChrimes",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3",
+    "express": "^4.16.4",
     "nunjucks": "^3.1.3",
     "path": "^0.12.7"
   },
@@ -20,7 +20,7 @@
     "gulp": "^4.0.0",
     "gulp-clean-css": "^3.10.0",
     "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.1",
-    "nodemon": "^1.18.4"
+    "gulp-sass": "^4.0.2",
+    "nodemon": "^1.18.6"
   }
 }
