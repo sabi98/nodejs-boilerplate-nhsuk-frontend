@@ -1,6 +1,7 @@
 # Simple Nodejs boilerplate
 
-Nodejs boilerplate with nodemon, gulp and nunjucks. Useful for basic websites or protoypes.
+Nodejs boilerplate with express, nodemon, gulp and nunjucks. 
+Useful for creating basic websites or protoypes.
 
 ## Prerequisite
 
