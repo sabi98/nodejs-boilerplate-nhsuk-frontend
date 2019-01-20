@@ -1,3 +1,5 @@
-const greeting = 'Hello world!';
+import defaultGreeting from './greeting';
 
-console.log(`${greeting}`);
+const greeting = defaultGreeting();
+
+console.log(greeting);

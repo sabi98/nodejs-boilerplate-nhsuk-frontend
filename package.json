@@ -12,7 +12,7 @@
     "nuke": "npm run clean && rm -rf node_modules/",
     "postinstall": "npm run build",
     "start": "node app",
-    "test": "",
+    "test": "mocha --require @babel/register test/**/*.spec.js",
     "watch": "concurrently \"npm run watch:scss\" \"npm run watch:js\" \"npm start\"",
     "watch:scss": "npm run build:css -- -w",
     "watch:js": "npm run build:js -- -w"
@@ -33,8 +33,11 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
     "browser-sync": "^2.26.3",
+    "chai": "^4.2.0",
     "concurrently": "^4.1.0",
+    "mocha": "^5.2.0",
     "rollup": "^1.1.1",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-node-resolve": "^4.0.0",
