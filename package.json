@@ -1,7 +1,7 @@
 {
   "name": "nodejs-boilerplate",
   "version": "1.0.0",
-  "description": "Nodejs boilerplate with express, nodemon and nunjucks.",
+  "description": "Nodejs boilerplate with express, nunjucks, rollupjs and browsersync.",
   "main": "app.js",
   "scripts": {
     "build": "npm run build:css && npm run build:js && npm run build:assets",
@@ -10,9 +10,12 @@
     "build:assets": "copyfiles --flat app/assets/* public/assets/",
     "clean": "touch public/tmp.txt && rm -rf public/*",
     "nuke": "npm run clean && rm -rf node_modules/",
+    "postinstall": "npm run build",
     "start": "node app",
     "test": "",
-    "watch": "concurrently \"gulp\" \"nodemon -e js,njk,scss --watch app\""
+    "watch": "concurrently \"npm run watch:scss\" \"npm run watch:js\" \"npm start\"",
+    "watch:scss": "npm run build:css -- -w",
+    "watch:js": "npm run build:js -- -w"
   },
   "author": "https://github.com/AdamChrimes",
   "repository": {
@@ -30,7 +33,8 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
-    "nodemon": "^1.18.7",
+    "browser-sync": "^2.26.3",
+    "concurrently": "^4.1.0",
     "rollup": "^1.1.1",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-node-resolve": "^4.0.0",

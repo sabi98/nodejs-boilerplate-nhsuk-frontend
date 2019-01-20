@@ -2,6 +2,7 @@
 const path = require('path')
 
 // External dependencies
+const browserSync = require('browser-sync')
 const express = require('express');
 const nunjucks = require('nunjucks');
 
@@ -43,11 +44,16 @@ app.get(/^([^.]+)$/, function (req, res, next) {
 })
 
 if (env === 'production') {
-  app.listen(port);
+  app.listen(port)
 } else {
-  app.listen(port, function() {
-    console.log(`App running at http://localhost:${port}`);
-  });
+  app.listen(port - 50, function () {
+    browserSync({
+      proxy: 'localhost:' + (port - 50),
+      port: port,
+      files: ['app/views/**/*.*', 'public/**/*.*'],
+      open: false,
+    })
+  })
 }
 
 module.exports = app;

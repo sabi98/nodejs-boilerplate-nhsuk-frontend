@@ -1,6 +1,6 @@
 # Nodejs boilerplate
 
-Nodejs boilerplate with express, nodemon and nunjucks. 
+Nodejs boilerplate with express, nunjucks, rollupjs and browsersync. 
 
 ## Prerequisite
 
