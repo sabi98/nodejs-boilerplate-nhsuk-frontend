@@ -1,26 +1,39 @@
 {
   "name": "nodejs-boilerplate",
   "version": "1.0.0",
-  "description": "Nodejs boilerplate with nodemon, gulp and nunjucks. Useful for basic websites or protoypes.",
+  "description": "Nodejs boilerplate with express, nodemon and nunjucks.",
   "main": "app.js",
   "scripts": {
+    "build": "npm run build:css && npm run build:js && npm run build:assets",
+    "build:css": "node-sass --output-style compressed app/styles/main.scss public/css/main.min.css",
+    "build:js": "rollup -c",
+    "build:assets": "copyfiles --flat app/assets/* public/assets/",
+    "clean": "touch public/tmp.txt && rm -rf public/*",
+    "nuke": "npm run clean && rm -rf node_modules/",
     "start": "node app",
     "test": "",
     "watch": "concurrently \"gulp\" \"nodemon -e js,njk,scss --watch app\""
   },
   "author": "https://github.com/AdamChrimes",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdamChrimes/nodejs-boilerplate.git"
+  },
   "license": "MIT",
   "dependencies": {
+    "copyfiles": "^2.1.0",
     "express": "^4.16.4",
+    "node-sass": "^4.11.0",
     "nunjucks": "^3.1.4",
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "concurrently": "^4.1.0",
-    "gulp": "^4.0.0",
-    "gulp-clean-css": "^3.10.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.2",
-    "nodemon": "^1.18.7"
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "nodemon": "^1.18.7",
+    "rollup": "^1.1.1",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-uglify": "^6.0.1"
   }
 }

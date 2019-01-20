@@ -1,16 +1,31 @@
-const app = require('express')();
+// Core dependencies
+const path = require('path')
+
+// External dependencies
 const express = require('express');
-const routing = require('./middleware/routing.js');
 const nunjucks = require('nunjucks');
-const path = require('path');
 
+// Local dependencies
+const routing = require('./middleware/routing.js');
+const routes = require('./app/routes');
+
+// Set configuration variables
+const port = process.env.PORT || 3000;
+const env = process.env.NODE_ENV || 'development';
+
+// Initialise application
+const app = express();
+
+// Middleware to serve static assets
+app.use(express.static(path.join(__dirname, 'public')));
+
+// View engine (Nunjucks)
 app.set('view engine', 'njk');
-app.set('port', process.env.PORT || 3000);
-app.use(express.static(path.join(__dirname, 'app/assets')));
 
-var appViews = [
+// Nunjucks configuration
+const appViews = [
   path.join(__dirname, '/app/views/')
-]
+];
 
 nunjucks.configure(appViews, {
   autoescape: true,
@@ -19,19 +34,20 @@ nunjucks.configure(appViews, {
   watch: true
 })
 
+// Custom routes
+app.use('/', routes);
+
+// Automatically route pages
 app.get(/^([^.]+)$/, function (req, res, next) {
   routing.matchRoutes(req, res, next)
 })
 
-if (app.get('env') === 'production') {
-  app.use(function(err, req, res, next) {
-    console.error(err.stack);
-    res.sendStatus(err.status || 500);
+if (env === 'production') {
+  app.listen(port);
+} else {
+  app.listen(port, function() {
+    console.log(`App running at http://localhost:${port}`);
   });
 }
-
-app.listen(app.get('port'), function() {
-  console.log('App running at http://localhost:' + app.get('port'));
-});
 
 module.exports = app;
