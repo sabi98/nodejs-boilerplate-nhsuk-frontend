@@ -1,7 +1,12 @@
 language: node_js
 node_js:
-  - "lts/*"
+- lts/*
 cache:
   directories:
-    - ~/.npm
-    - ~/.cache
+  - "~/.npm"
+  - "~/.cache"
+deploy:
+  provider: heroku
+  api_key:
+    secure: AV5gmz9mlXue0W2c+v+On8/02OzhqANpSw2fl84wcAzNoqWFPtXPCcTkru3pBqYGLcMsTmFt8H2OdYmkqjsVkzymc+DLhweikX7IINunwnWXBCnQFWFpwg1JeKEb4b1l4Jbt82hfE3WVm75Fn2hSNU+WbrQUdTl84TdIfMHBk+dU2AABvVmM3pQrshDP1h8lhtNpy8X2a2P6qLkNwrax8GGIwlj0J4ooT2xyMKpT1feUu2ydS61JIrdUyxSGeZLf6tH8IA8Bf1ANXgnsMJ+aa19YQoC1Za9XE0wwpCEZJycgq144QLb0FfNlk0/+j93J064tBjEOvMXGNXflLg0D/ToO7rTYJ+q11p0ovyP55NFoTEtA749xgIDqZaUzKjIaQLPe7UhxIDbXhtfaTX2J2Vc4d5vdBANiZI8mSVOoEwJSn1w8k6rql6ZsckzzJwHUA9Mr1s6DCIWrLAwTf2iHhGhkRtv1wMFyoh7manlT5pE7BKjC1Ma1pK5CrzikiVXZK3ZdAQBou0wmObVOEQnxAVqgKXhu/GbyroG0GeQbf2QiOhkuiFZ7FXuE26WHhAuiSzAkAAWyss3ce1iXse/xwL5w3GYTekJltltvWLY0hiVzxeDuaUwgV5iFJ46ZcyUPm0EqzfLw+ONoUQb34ZJ9Cd0CvfNtlbAv6rAKiXAzfic=
+  app: hidden-shore-50717
