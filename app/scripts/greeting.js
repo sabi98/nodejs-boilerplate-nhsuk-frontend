@@ -1,9 +1,9 @@
 function defaultGreeting() {
-  return `Hello World!`;
-}
-
-function customGreeting(greeting) {
-  return `Hello ${greeting}`;
+  return 'Hello World!';
 }
 
 export default defaultGreeting;
+
+export function customGreeting(greeting) {
+  return `Hello ${greeting}`;
+}
