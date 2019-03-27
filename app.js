@@ -50,8 +50,10 @@ if (env === 'production') {
     browserSync({
       proxy: 'localhost:' + (port - 50),
       port: port,
+      ui: false,
       files: ['app/views/**/*.*', 'public/**/*.*'],
       open: false,
+      notify: true,
     })
   })
 }
