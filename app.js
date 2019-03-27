@@ -1,8 +1,8 @@
 // Core dependencies
-const path = require('path')
+const path = require('path');
 
 // External dependencies
-const browserSync = require('browser-sync')
+const browserSync = require('browser-sync');
 const express = require('express');
 const nunjucks = require('nunjucks');
 
@@ -25,26 +25,26 @@ app.set('view engine', 'njk');
 
 // Nunjucks configuration
 const appViews = [
-  path.join(__dirname, '/app/views/')
+  path.join(__dirname, '/app/views/'),
 ];
 
 nunjucks.configure(appViews, {
   autoescape: true,
   express: app,
   noCache: true,
-  watch: true
-})
+  watch: true,
+});
 
 // Custom routes
 app.use('/', routes);
 
 // Automatically route pages
-app.get(/^([^.]+)$/, function (req, res, next) {
-  routing.matchRoutes(req, res, next)
-})
+app.get('/', (req, res, next) => {
+  routing.matchRoutes(req, res, next);
+});
 
 if (env === 'production') {
-  app.listen(port)
+  app.listen(port);
 } else {
   app.listen(port - 50, function () {
     browserSync({
