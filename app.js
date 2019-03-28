@@ -18,7 +18,7 @@ const env = process.env.NODE_ENV || 'development';
 const app = express();
 
 // Middleware to serve static assets
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/')));
 
 // View engine (Nunjucks)
 app.set('view engine', 'njk');
