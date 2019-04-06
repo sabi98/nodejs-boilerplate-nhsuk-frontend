@@ -8,7 +8,6 @@ const express = require('express');
 const nunjucks = require('nunjucks');
 
 // Local dependencies
-const routing = require('./middleware/routing.js');
 const routes = require('./app/routes');
 
 // Set configuration variables
@@ -40,19 +39,23 @@ nunjucks.configure(appViews, {
   watch: true,
 });
 
-if (env === 'production') {
-  app.listen(port);
-} else {
-  app.listen(port - 50, function () {
+// Routes
+app.use('/', routes);
+
+// Run application on configured port
+if (env === 'development') {
+  app.listen(port - 50, () => {
     browserSync({
-      proxy: 'localhost:' + (port - 50),
-      port: port,
-      ui: false,
       files: ['app/views/**/*.*', 'public/**/*.*'],
-      open: false,
       notify: true,
-    })
-  })
+      open: false,
+      port,
+      proxy: `localhost:${port - 50}`,
+      ui: false,
+    });
+  });
+} else {
+  app.listen(port);
 }
 
 module.exports = app;
