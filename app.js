@@ -8,6 +8,8 @@ const express = require('express');
 const nunjucks = require('nunjucks');
 
 // Local dependencies
+const config = require('./app/config');
+const locals = require('./app/locals');
 const routes = require('./app/routes');
 
 // Set configuration variables
@@ -27,6 +29,9 @@ app.use(express.static(path.join(__dirname, 'public/')));
 // View engine (Nunjucks)
 app.set('view engine', 'njk');
 
+// Use local variables
+app.use(locals(config));
+
 // Nunjucks configuration
 const appViews = [
   path.join(__dirname, '/app/views/'),
@@ -43,19 +48,19 @@ nunjucks.configure(appViews, {
 app.use('/', routes);
 
 // Run application on configured port
-if (env === 'development') {
-  app.listen(port - 50, () => {
+if (config.env === 'development') {
+  app.listen(config.port - 50, () => {
     browserSync({
       files: ['app/views/**/*.*', 'public/**/*.*'],
       notify: true,
       open: false,
-      port,
-      proxy: `localhost:${port - 50}`,
+      port: config.port,
+      proxy: `localhost:${config.port - 50}`,
       ui: false,
     });
   });
 } else {
-  app.listen(port);
+  app.listen(config.port);
 }
 
 module.exports = app;
