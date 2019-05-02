@@ -1,6 +1,6 @@
 module.exports = config => (req, res, next) => {
-  res.locals.app_name = config.appName;
-  res.locals.message = config.message;
+  res.locals.APP_NAME = config.appName;
+  res.locals.MESSAGE = config.message;
 
   next();
 };
