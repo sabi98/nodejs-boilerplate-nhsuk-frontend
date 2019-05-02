@@ -1,6 +1,11 @@
+const defaultGreeting = require('../app/scripts/greeting');
+
 module.exports = {
   // App name
   appName: 'Node.js boilerplate',
+
+  // Message
+  message: defaultGreeting(),
 
   // Environment
   env: process.env.NODE_ENV || 'development',
