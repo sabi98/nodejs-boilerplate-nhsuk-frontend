@@ -12,10 +12,6 @@ const config = require('./app/config');
 const locals = require('./app/locals');
 const routes = require('./app/routes');
 
-// Set configuration variables
-const port = process.env.PORT || 3000;
-const env = process.env.NODE_ENV || 'development';
-
 // Initialise application
 const app = express();
 
