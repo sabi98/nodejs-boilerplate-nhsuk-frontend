@@ -21,6 +21,7 @@ app.use(compression());
 
 // Middleware to serve static assets
 app.use(express.static(path.join(__dirname, 'public/')));
+app.use('/nhsuk-frontend', express.static(path.join(__dirname, '/node_modules/nhsuk-frontend/packages')));
 
 // View engine (Nunjucks)
 app.set('view engine', 'njk');
@@ -31,6 +32,7 @@ app.use(locals(config));
 // Nunjucks configuration
 const appViews = [
   path.join(__dirname, '/app/views/'),
+  path.join(__dirname, '/node_modules/nhsuk-frontend/packages/'),
 ];
 
 nunjucks.configure(appViews, {
